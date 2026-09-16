@@ -1,0 +1,21 @@
+# Standard pip dependencies.
+torch==2.13.0
+transformers==4.57.6
+datasets==5.0.1
+huggingface_hub==0.36.2
+numpy==2.5.3
+pandas==3.0.5
+pillow==12.3.0
+PyYAML==6.0.3
+safetensors==0.8.0
+scikit-learn==1.9.0
+tqdm==4.70.0
+peft==0.20.0
+
+# NOT installable via pip -- see README.md "Environment setup" for the exact
+# clone + patch steps required before any script in this repo will run:
+#   - colpali_engine (BiModernVBert / BiModernVBertProcessor) from the
+#     `vbert` branch of https://github.com/illuin-tech/colpali (not on PyPI)
+#   - the V-SPLADE training/inference package from
+#     https://github.com/naver/v-splade (src/models/vsplade.py imports it
+#     from a hardcoded path, see V_SPLADE_REPO in that file)

@@ -1,0 +1,22 @@
+experiment_name: dense_only
+method: dense_bimodernvbert
+
+model:
+  name: ModernVBERT/bimodernvbert
+  backbone: ModernVBERT (SigLIP2-base-patch16-512 vision + ettin-encoder-150m text, ~250M params)
+  arch: bi-encoder-single-vector   # NOT multi-vector late interaction, unlike the earlier ColQwen2.5 setup
+  dtype: bfloat16
+  device: cuda
+  frozen: true
+
+dataset:
+  benchmark: vidore_v1   # vidore_v1 | vidore_v3
+  split: test
+  # subset: null -> run all subsets defined in src/data/load_vidore.py
+
+sparse:
+  enabled: false
+
+seed: 42
+batch_size: 16   # BiModernVBERT is ~250M params vs ColQwen2.5's ~3B -- much more VRAM headroom
+output_dir: outputs
